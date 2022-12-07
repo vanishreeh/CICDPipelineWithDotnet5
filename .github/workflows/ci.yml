@@ -1,0 +1,23 @@
+name: .NET 5 CI
+on: [push]
+# job is a set of steps in a workflow, that executes on same runner
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: .NET 5 Application
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup-dotnet
+        uses: setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.401"
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: build Application
+        run: dotnet build -c release --no--restore
+
+      #writing testcase in pipeline
+      - name: Run Automated test
+        run: dotnet test -c release --no--restore
