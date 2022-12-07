@@ -19,5 +19,5 @@ jobs:
         run: dotnet build -c release --no--restore
 
       #writing testcase in pipeline
-      - name: Run Automated test
-        run: dotnet test -c release --no--restore
+      #- name: Run Automated test
+      #  run: dotnet test -c release --no--restore
